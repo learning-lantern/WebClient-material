@@ -1,1 +1,111 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+$my-brown: (
+  50: #f2e9e0,
+  100: #e0c9b3,
+  200: #cba580,
+  300: #b6814d,
+  400: #a66626,
+  500: #964b00,
+  600: #8e4400,
+  700: #833b00,
+  800: #793300,
+  900: #682300,
+  A100: #ffb197,
+  A200: #ff8b64,
+  A400: #ff6531,
+  A700: #ff5218,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
+$my-green: (
+  50: #e2ece3,
+  100: #b7cfb9,
+  200: #87b08b,
+  300: #56905c,
+  400: #327839,
+  500: #0e6016,
+  600: #0c5813,
+  700: #0a4e10,
+  800: #08440c,
+  900: #043306,
+  A100: #6bff70,
+  A200: #38ff3f,
+  A400: #05ff0d,
+  A700: #00eb08,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$train-primary: mat.define-palette($my-green);
+$train-accent: mat.define-palette($my-brown, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$train-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$train-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $train-primary,
+      accent: $train-accent,
+      warn: $train-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($train-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
