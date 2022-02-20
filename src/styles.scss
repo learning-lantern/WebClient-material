@@ -8,25 +8,25 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 $my-brown: (
-  50: #f2e9e0,
-  100: #e0c9b3,
-  200: #cba580,
-  300: #b6814d,
-  400: #a66626,
-  500: #964b00,
-  600: #8e4400,
-  700: #833b00,
-  800: #793300,
-  900: #682300,
-  A100: #ffb197,
-  A200: #ff8b64,
-  A400: #ff6531,
-  A700: #ff5218,
+  50: #f3e0e0,
+  100: #e0b3b3,
+  200: #cc8080,
+  300: #b84d4d,
+  400: #a82626,
+  500: #990000,
+  600: #910000,
+  700: #860000,
+  800: #7c0000,
+  900: #6b0000,
+  A100: #ff9a9a,
+  A200: #ff6767,
+  A400: #ff3434,
+  A700: #ff1a1a,
   contrast: (
     50: #000000,
     100: #000000,
     200: #000000,
-    300: #000000,
+    300: #ffffff,
     400: #ffffff,
     500: #ffffff,
     600: #ffffff,
@@ -35,7 +35,7 @@ $my-brown: (
     900: #ffffff,
     A100: #000000,
     A200: #000000,
-    A400: #000000,
+    A400: #ffffff,
     A700: #ffffff,
   ),
 );
@@ -101,6 +101,15 @@ $train-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  --green: 14, 96, 22;
+  --light-green: 28, 171, 4;
+  --very-light-green: 217, 253, 211;
+  --brown: 159, 0, 0;
+  --light-brown: 243, 187, 125;
+  --light-silver: 237, 237, 237;
+}
+
 html,
 body {
   height: 100%;
@@ -108,4 +117,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// icons
+.icon50 {
+  width: 50px;
+  height: 50px;
 }

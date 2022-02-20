@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "learning-lantern": {
+      "hosting": {
+        "train": [
+          "learning-lantern"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "learning-lantern"
+  }
+}

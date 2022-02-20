@@ -1,0 +1,30 @@
+<mat-nav-list>
+  <div class="close">
+    <button mat-icon-button (click)="sideToggle()" color="primary">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <a mat-list-item routerLink="./mycourses" (click)="sideToggle()">
+    <mat-icon color="primary" style="margin-right: 0.25rem">home</mat-icon>
+    <span>My Courses</span>
+  </a>
+  <a mat-list-item routerLink="./todo" (click)="sideToggle()">
+    <mat-icon color="primary" style="margin-right: 0.25rem">done_all</mat-icon>
+    <span>Todo List</span>
+  </a>
+  <a mat-list-item routerLink="./calendar" (click)="sideToggle()">
+    <mat-icon color="primary" style="margin-right: 0.25rem"
+      >calendar_month</mat-icon
+    >
+    <span>Calendar</span>
+  </a>
+  <div class="separator"></div>
+  <a mat-list-item routerLink="." (click)="sideToggle()">
+    <mat-icon color="primary" style="margin-right: 0.25rem">settings</mat-icon>
+    <span>Settings</span>
+  </a>
+  <a mat-list-item routerLink="." (click)="sideToggle()">
+    <mat-icon color="primary" style="margin-right: 0.25rem">logout</mat-icon>
+    <span>Log Out</span>
+  </a>
+</mat-nav-list>

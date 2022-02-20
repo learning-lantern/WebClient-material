@@ -1,0 +1,46 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  flex-direction: column;
+}
+
+.login-form {
+  width: 90%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-photo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: -5rem;
+}
+
+.form-photo img {
+  position: relative;
+  max-width: 170px;
+  transform: translateY(-100px);
+}
+
+.submit-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: rgba(var(--brown));
+}
+
+.forget-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}

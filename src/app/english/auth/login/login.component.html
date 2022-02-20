@@ -1,0 +1,88 @@
+<div class="login-container">
+  <form
+    class="login-from"
+    action="."
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <span class="form-photo">
+      <img src="/assets/img/login.svg" alt="login" />
+    </span>
+
+    <mat-form-field appearance="outline">
+      <mat-label class="arabic"> University</mat-label>
+      <mat-select
+        class="amount-input"
+        formControlName="userUniversity"
+        name="userUniversity"
+        required
+      >
+        <mat-option
+          *ngFor="let university of universityList"
+          value="{{ university.id }}"
+          >{{ university.name }}</mat-option
+        >
+      </mat-select>
+      <mat-error>this field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Your email</mat-label>
+      <input
+        name="userEmail"
+        matInput
+        formControlName="userEmail"
+        placeholder="user@domain.com"
+        required
+      />
+
+      <mat-error *ngIf="userEmail.errors?.['required']"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="userEmail.errors?.['email']"
+        >Please enter a valid email</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        required
+        name="userPassword"
+        formControlName="userPassword"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-hint
+        >Password should be 8 - 30 chars long and should contain letters and
+        numbers.
+      </mat-hint>
+      <mat-error *ngIf="userPassword.hasError('required')"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="userPassword.hasError('pattern')"
+        >Password should be 8 - 30 chars long and should contain letters and
+        numbers.</mat-error
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="forget-container">
+      <mat-checkbox color="primary">Remember Me.</mat-checkbox>
+      <a routerLink=".">Forget Password?</a>
+    </div>
+
+    <span class="submit-container">
+      <button mat-stroked-button type="submit" color="primary">Login</button>
+    </span>
+    <p style="text-align: center">
+      <a routerLink="../signup">Donot have accout? signup now.</a>
+    </p>
+  </form>
+</div>

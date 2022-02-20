@@ -1,0 +1,171 @@
+<div class="login-container">
+  <form
+    class="login-from"
+    action="."
+    [formGroup]="signupForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <span class="form-photo">
+      <img src="/assets/img/reg.png" alt="login" />
+    </span>
+
+    <mat-form-field appearance="outline">
+      <mat-label> University</mat-label>
+      <mat-select
+        class="amount-input"
+        formControlName="userUniversity"
+        name="userUniversity"
+        required
+      >
+        <mat-option
+          *ngFor="let university of universityList"
+          value="{{ university.id }}"
+          >{{ university.name }}</mat-option
+        >
+      </mat-select>
+      <mat-error>this field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>First Name</mat-label>
+      <input
+        name="FirstName"
+        matInput
+        formControlName="FirstName"
+        placeholder="Name"
+        required
+      />
+      <mat-error *ngIf="FirstName.errors?.['required']"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="FirstName.errors?.['minlength']"
+        >Name should be 2-30 characters long</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Middle Name</mat-label>
+      <input
+        name="MiddleName"
+        matInput
+        formControlName="MiddleName"
+        placeholder="Name"
+        required
+      />
+      <mat-error *ngIf="MiddleName.errors?.['required']"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="MiddleName.errors?.['minlength']"
+        >Name should be 2-30 characters long</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Last Name</mat-label>
+      <input
+        name="LastName"
+        matInput
+        formControlName="LastName"
+        placeholder="Name"
+        required
+      />
+      <mat-error *ngIf="LastName.errors?.['required']"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="LastName.errors?.['minlength']"
+        >Name should be 2-30 characters long</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Your email</mat-label>
+      <input
+        name="Email"
+        matInput
+        formControlName="Email"
+        placeholder="user@domain.com"
+        required
+      />
+
+      <mat-error *ngIf="Email.errors?.['required']"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="Email.errors?.['email']"
+        >Please enter a valid email</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        required
+        name="Password"
+        formControlName="Password"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-hint
+        >Password should be 8 - 30 chars long and should contain letters and
+        numbers.
+      </mat-hint>
+      <mat-error *ngIf="Password.hasError('required')"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="Password.hasError('pattern')"
+        >Password should be 8 - 30 chars long and should contain letters and
+        numbers and special characters [@$!%*?&].</mat-error
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm password</mat-label>
+      <input
+        matInput
+        required
+        name="ConfirmPassword"
+        formControlName="ConfirmPassword"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-hint
+        >Password should be 8 - 30 chars long and should contain letters and
+        numbers.
+      </mat-hint>
+      <mat-error *ngIf="ConfirmPassword.hasError('required')"
+        >This Field is Required</mat-error
+      >
+      <mat-error *ngIf="ConfirmPassword.hasError('pattern')"
+        >Password should be 8 - 30 chars long and should contain letters and
+        numbers and special characters [@$!%*?&].</mat-error
+      >
+      <mat-error *ngIf="ConfirmPassword.hasError('notMatch')"
+        >Password & Confirm Password doesn't match.</mat-error
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="forget-container">
+      <mat-checkbox formControlName="iAgree" color="primary"
+        >I Agree on <a routerLink=".">Terms&Conditions</a></mat-checkbox
+      >
+    </div>
+
+    <span class="submit-container">
+      <button mat-stroked-button type="submit" color="primary">Sign Up</button>
+    </span>
+    <p style="text-align: center">
+      <a routerLink="../login">Already have accout? login now.</a>
+    </p>
+  </form>
+</div>

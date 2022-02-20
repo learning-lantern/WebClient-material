@@ -125,6 +125,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "train:build:production",
+            "firebaseProject": "learning-lantern",
+            "firebaseHostingSite": "learning-lantern"
+          }
         }
       }
     }
