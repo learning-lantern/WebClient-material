@@ -16,6 +16,7 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url === '/en/class/todo') {
+      console.log(this.router.url);
       this.router.navigate([this.router.url, 'myday']);
     }
     this.detail.getShowDetail().subscribe((data) => {
