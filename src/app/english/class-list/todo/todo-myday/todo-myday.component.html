@@ -9,9 +9,11 @@
   <mat-nav-list>
     <mat-list-item *ngFor="let task of taksList" (click)="openDetail(task)">
       <mat-checkbox>{{ task.name }}</mat-checkbox>
-      <mat-icon (click)="task.isFavorite = !task.isFavorite">{{
-        task.isFavorite ? "star" : "star_outline"
-      }}</mat-icon>
+      <mat-icon
+        style="margin-left: auto; padding: 1em"
+        (click)="task.isFavorite = !task.isFavorite"
+        >{{ task.isFavorite ? "star" : "star_outline" }}</mat-icon
+      >
     </mat-list-item>
   </mat-nav-list>
 </mat-card>

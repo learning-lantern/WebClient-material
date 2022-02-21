@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { showDetailService } from './show-detail.service';
 @Component({
   selector: 'app-todo',
@@ -11,9 +12,12 @@ export class TodoComponent implements OnInit {
     name: 'dummy',
     isFavorite: true,
   };
-  constructor(private detail: showDetailService) {}
-  @ViewChild('right') details: any;
+  constructor(private detail: showDetailService, private router: Router) {}
+
   ngOnInit(): void {
+    if (this.router.url === '/en/class/todo') {
+      this.router.navigate([this.router.url, 'myday']);
+    }
     this.detail.getShowDetail().subscribe((data) => {
       this.showDetails();
       this.taskDetail = data;
