@@ -1,0 +1,27 @@
+<mat-nav-list>
+  <div class="close">
+    <button mat-icon-button color="primary" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <a mat-list-item routerLink="./myday">
+    <mat-icon color="primary" style="margin-right: 0.25rem"
+      >light_mode</mat-icon
+    >
+    <span>My Day</span>
+  </a>
+  <a mat-list-item routerLink=".">
+    <mat-icon color="primary" style="margin-right: 0.25rem">home</mat-icon>
+    <span>Tasks</span>
+  </a>
+  <a mat-list-item routerLink=".">
+    <mat-icon color="primary" style="margin-right: 0.25rem">star</mat-icon>
+    <span>Important</span>
+  </a>
+  <a mat-list-item routerLink=".">
+    <mat-icon color="primary" style="margin-right: 0.25rem"
+      >calendar_month</mat-icon
+    >
+    <span>Planned Tasks</span>
+  </a>
+</mat-nav-list>

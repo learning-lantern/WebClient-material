@@ -1,1 +1,26 @@
-<p>todo works!</p>
+<mat-drawer-container>
+  <mat-drawer #left class="left" position="start" mode="side">
+    <app-todo-sidenav (toggleSidenav)="left.close()"></app-todo-sidenav>
+  </mat-drawer>
+  <mat-drawer
+    #right
+    class="right"
+    [opened]="detailOpend"
+    position="end"
+    mode="side"
+  >
+    <app-todo-detail
+      [task]="taskDetail"
+      (toggleSidenav)="right.close()"
+    ></app-todo-detail>
+  </mat-drawer>
+  <mat-drawer-content (showDetail)="right.toggle()">
+    <mat-toolbar>
+      <button mat-icon-button (click)="left.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h2>Todo List</h2>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

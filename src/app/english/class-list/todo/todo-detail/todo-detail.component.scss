@@ -1,0 +1,25 @@
+.close {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+a span {
+  color: rgba(var(--green));
+}
+
+mat-card {
+  margin: 0.4rem;
+}
+
+.task-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.repeat-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

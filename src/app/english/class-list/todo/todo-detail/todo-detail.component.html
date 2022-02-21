@@ -1,0 +1,61 @@
+<mat-nav-list class="main">
+  <div class="close">
+    <button mat-icon-button color="primary" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-card>
+    <div class="task-name">
+      <mat-checkbox>{{ taskDetails.name }}</mat-checkbox>
+      <mat-icon (click)="taskDetails.isFavorite = !taskDetails.isFavorite">{{
+        taskDetails.isFavorite ? "star" : "star_outline"
+      }}</mat-icon>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <a mat-list-item routerLink="./mycourses">
+      <mat-icon color="primary" style="margin-right: 0.25rem"
+        >light_mode</mat-icon
+      >
+      <span>Add to My Day</span>
+    </a>
+  </mat-card>
+  <mat-card>
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Add Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="repeat-option">
+      <button mat-icon-button [matMenuTriggerFor]="repeat">
+        <mat-icon
+          style="margin-right: 0.2rem; transform: scale(1.2)"
+          color="primary"
+          >repeat</mat-icon
+        >
+        {{ repeatOption || "Repeat" }}
+      </button>
+      <button mat-icon-button (click)="setRepeatOption('')">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-menu #repeat="matMenu">
+        <span mat-menu-item (click)="setRepeatOption('Daily')">Daily</span>
+        <span mat-menu-item (click)="setRepeatOption('Weekly')">Weekly</span>
+        <span mat-menu-item (click)="setRepeatOption('Monthly')">Monthly</span>
+      </mat-menu>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      style="width: 100%"
+    >
+      <mat-label>Notes</mat-label>
+      <textarea matInput placeholder="Notes"></textarea>
+    </mat-form-field>
+  </mat-card>
+</mat-nav-list>
