@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ClassListComponent implements OnInit {
   constructor(private router: Router) {
-    this.router.navigate(['/en/class/mycourses']);
+    if (this.router.url.split('/').length == 3)
+      this.router.navigate(['/en/class/mycourses']);
   }
 
   ngOnInit(): void {}

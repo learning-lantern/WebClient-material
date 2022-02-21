@@ -13,7 +13,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
 const materials = [
   MatButtonModule,
   MatFormFieldModule,
@@ -28,6 +30,9 @@ const materials = [
   MatGridListModule,
   MatListModule,
   MatProgressSpinnerModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTableModule,
 ];
 
 @NgModule({

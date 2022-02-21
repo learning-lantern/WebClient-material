@@ -9,6 +9,10 @@ import { ClassHeaderComponent } from './class-header/class-header.component';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
 import { TodoComponent } from './todo/todo.component';
 import { CalenderComponent } from './calender/calender.component';
+import { TodoSidenavComponent } from './todo/todo-sidenav/todo-sidenav.component';
+import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
+import { TodoMydayComponent } from './todo/todo-myday/todo-myday.component';
+import { showDetailService } from './todo/show-detail.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { CalenderComponent } from './calender/calender.component';
     MyCoursesComponent,
     TodoComponent,
     CalenderComponent,
+    TodoSidenavComponent,
+    TodoDetailComponent,
+    TodoMydayComponent,
   ],
   imports: [CommonModule, ClassListRoutingModule, MaterialModule],
+  providers: [showDetailService],
 })
 export class ClassListModule {}

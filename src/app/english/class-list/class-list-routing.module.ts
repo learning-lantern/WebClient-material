@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CalenderComponent } from './calender/calender.component';
 import { ClassListComponent } from './class-list.component';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
+import { TodoMydayComponent } from './todo/todo-myday/todo-myday.component';
 import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
       {
         path: 'todo',
         component: TodoComponent,
+        children: [{ path: 'myday', component: TodoMydayComponent }],
       },
       {
         path: 'calendar',
