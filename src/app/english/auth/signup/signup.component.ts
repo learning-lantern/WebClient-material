@@ -35,39 +35,39 @@ export class SignupComponent {
     this.createForm();
   }
   initFormControls() {
-    this.userUniversity = new FormControl('1', [Validators.required]);
-    this.userFName = new FormControl('hema', [
+    this.userUniversity = new FormControl('', [Validators.required]);
+    this.userFName = new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       validateName,
     ]);
-    this.userMName = new FormControl('mohamed', [
+    this.userMName = new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       validateName,
     ]);
-    this.userLName = new FormControl('ali', [
+    this.userLName = new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       validateName,
     ]);
-    this.userEmail = new FormControl('hema@gmail.com', [
+    this.userEmail = new FormControl('', [
       Validators.required,
       Validators.email,
     ]);
-    this.userPassword = new FormControl('123456Hr@', [
+    this.userPassword = new FormControl('', [
       Validators.required,
       Validators.pattern(
         '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]{6,}$'
       ),
     ]);
-    this.confirmPassword = new FormControl('123456Hr@', [
+    this.confirmPassword = new FormControl('', [
       Validators.required,
       Validators.pattern(
         '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]{6,}$'
       ),
     ]);
-    this.iAgree = new FormControl(true, [Validators.requiredTrue]);
+    this.iAgree = new FormControl(null, [Validators.requiredTrue]);
   }
 
   createForm() {
