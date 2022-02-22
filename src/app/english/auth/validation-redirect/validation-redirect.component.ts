@@ -15,13 +15,17 @@ export class ValidationRedirectComponent implements OnInit {
   ngOnInit(): void {
     this.router.queryParams.subscribe((params) => {
       this.params = params;
-      console.log(params);
+      let token = encodeURIComponent(this.params.token);
+      console.log(token);
       this.http
         .doGet(
-          `${env.authURL}/Auth/ConfirmEmail?userId=${
-            this.params.userId
-          }&token=${encodeURIComponent(this.params.token)}`,
-          {}
+          `${env.authURL}/Auth/ConfirmEmail?userId=${this.params.userId}&token=${token}`,
+          {
+            params: {
+              userId: this.params.userId,
+              token: encodeURIComponent(this.params.token),
+            },
+          }
         )
         .subscribe(
           (res) => {
