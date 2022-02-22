@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './landing/main/main.component';
 import { EmailValidationComponent } from './auth/email-validation/email-validation.component';
 import { ValidationRedirectComponent } from './auth/validation-redirect/validation-redirect.component';
-
 @NgModule({
   declarations: [
     EnglishComponent,
@@ -30,5 +29,6 @@ import { ValidationRedirectComponent } from './auth/validation-redirect/validati
     ServiceModule,
     ReactiveFormsModule,
   ],
+  providers: [],
 })
 export class EnglishModule {}

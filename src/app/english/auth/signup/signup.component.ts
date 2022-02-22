@@ -87,59 +87,59 @@ export class SignupComponent {
   }
 
   onSubmit() {
+    let body = {
+      Email: this.userEmail.value,
+      Password: this.userPassword.value,
+      FirstName: this.userFName.value,
+      LastName: this.userLName.value,
+    };
+
     if (this.signupForm.invalid) {
       Object.keys(this.signupForm.controls).forEach((key) => {
         this.signupForm.controls[key].markAsDirty();
         this.signupForm.controls[key].markAsTouched();
       });
     } else {
-      this.http
-        .doPost(`${env.authURL}/signup`, this.signupForm.value, {})
-        .subscribe(
-          (res: any) => {
+      this.http.doPost(`${env.authURL}/Auth/Create`, body, {}).subscribe(
+        async (res) => {
+          this.notify.openSnackBar('Created Successfully', 'ok', '', '', 3000);
+          this.router.navigate([
+            `/en/auth/email-validation/${this.userEmail.value}`,
+          ]);
+        },
+        (error) => {
+          console.log(error);
+          if (error.status === 409) {
             this.notify.openSnackBar(
-              'Created Successfully',
+              'email already registered',
               'ok',
               '',
               '',
               3000
             );
-            this.router.navigate([
-              `/en/auth/email-validation/${this.userEmail.value}`,
-            ]);
-          },
-          (error) => {
-            if (error.status === 409) {
-              this.notify.openSnackBar(
-                'email already registered',
-                'ok',
-                '',
-                '',
-                3000
-              );
-              this.userEmail.setErrors({
-                isExist:
-                  'This email is already registered before, please use another email or login instead',
-              });
-            } else if (error.status === 500 || error.status === 404) {
-              this.notify.openSnackBar(
-                'Internal server Error, please try again later',
-                'ok',
-                '',
-                '',
-                3000
-              );
-            } else {
-              this.notify.openSnackBar(
-                'server is down, please try again later',
-                'ok',
-                '',
-                '',
-                3000
-              );
-            }
+            this.userEmail.setErrors({
+              isExist:
+                'This email is already registered before, please use another email or login instead',
+            });
+          } else if (error.status === 500 || error.status === 404) {
+            this.notify.openSnackBar(
+              'Internal server Error, please try again later',
+              'ok',
+              '',
+              '',
+              3000
+            );
+          } else {
+            this.notify.openSnackBar(
+              'server is down, please try again later',
+              'ok',
+              '',
+              '',
+              3000
+            );
           }
-        );
+        }
+      );
     }
   }
 }
