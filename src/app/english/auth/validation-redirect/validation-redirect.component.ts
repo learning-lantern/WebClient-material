@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { HttpService } from 'src/app/serivces/http.service';
+import { NotificationService } from 'src/app/serivces/notifications.service';
 import { environment as env } from 'src/environments/environment';
 @Component({
   selector: 'app-validation-redirect',
@@ -10,7 +11,12 @@ import { environment as env } from 'src/environments/environment';
 })
 export class ValidationRedirectComponent implements OnInit {
   params: any;
-  constructor(private router: ActivatedRoute, private http: HttpService) {}
+  constructor(
+    private router: ActivatedRoute,
+    private http: HttpService,
+    private notify: NotificationService,
+    private redirect: Router
+  ) {}
 
   ngOnInit(): void {
     this.router.queryParams.subscribe((params) => {
@@ -29,9 +35,18 @@ export class ValidationRedirectComponent implements OnInit {
         )
         .subscribe(
           (res) => {
-            console.log(res);
+            this.notify.openSnackBar('Email Validated!', 'ok', '', '', 3000);
+            this.redirect.navigate(['/en/welcome']);
           },
-          (error) => {}
+          (error) => {
+            this.notify.openSnackBar(
+              'erorr! please try again later',
+              'ok',
+              '',
+              '',
+              3000
+            );
+          }
         );
     });
   }

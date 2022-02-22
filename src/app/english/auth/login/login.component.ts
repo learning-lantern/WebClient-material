@@ -37,7 +37,9 @@ export class LoginComponent {
     ]);
     this.userPassword = new FormControl('', [
       Validators.required,
-      Validators.pattern('^(?=.*[A-Z].*[a-z])(?=.*[0-9]).{8,30}$'),
+      Validators.pattern(
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]{6,}$'
+      ),
     ]);
   }
 
@@ -56,16 +58,29 @@ export class LoginComponent {
         this.loginForm.controls[key].markAsTouched();
       });
     } else {
-      let body = this.loginForm.value;
-      this.http.doPost(`${env.authURL}/login`, {}, {}).subscribe(
+      let body_ = {
+        Email: this.userEmail.value,
+        Password: this.userPassword.value,
+      };
+      this.http.doPost(`${env.authURL}/Auth/signin`, body_, {}).subscribe(
         (res) => {
-          let result = res as { id: number; token: string };
+          console.log('hey!!!!!!');
+          let result = res as {
+            id: number;
+            token: string;
+            lastName: string;
+            firstName: string;
+          };
           localStorage.setItem('userId', JSON.stringify(result.id));
           localStorage.setItem('token', JSON.stringify(result.token));
+          localStorage.setItem('fName', JSON.stringify(result.firstName));
+          localStorage.setItem('lName', JSON.stringify(result.lastName));
+          this.notify.openSnackBar('Successfull', 'ok', '', '', 3000);
           this.router.navigate(['/en/class']);
         },
         (error) => {
-          // if (error.status === 401) return;
+          console.log(error);
+          this.notify.openSnackBar('Error', 'ok', '', '', 3000);
         }
       );
     }
