@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 const materials = [
   MatButtonModule,
   MatFormFieldModule,
@@ -35,6 +36,7 @@ const materials = [
   MatNativeDateModule,
   MatTableModule,
   MatSnackBarModule,
+  MatBadgeModule,
 ];
 
 @NgModule({

@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RefreshComponent } from './refresh/refresh.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
     path: 'en',
     loadChildren: () =>
       import('./english/english.module').then((m) => m.EnglishModule),
+  },
+  {
+    path: 'refresh',
+    component: RefreshComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

@@ -1,1 +1,19 @@
-<p>my-courses works!</p>
+<mat-toolbar>
+  <h2>My Courses</h2>
+</mat-toolbar>
+<div class="mycourses-container">
+  <div class="class-grid">
+    <button
+      *ngFor="let course of coursesList"
+      routerLink="."
+      class="class-item"
+      mat-raised-button
+      matBadge="{{ course.notifications ? course.notifications : '' }}"
+      matBadgePosition="after"
+      matBadgeColor="warn"
+    >
+      <p>{{ course.title }}</p>
+      <p>online: {{ course.online }}</p>
+    </button>
+  </div>
+</div>

@@ -35,9 +35,47 @@
           >Contact Us</a
         >
       </div>
-      <div class="login toggle">
+      <div class="login toggle" *ngIf="!hasToken">
         <mat-icon style="margin-right: -1.5rem">login</mat-icon>
         <a routerLink="./auth/login" class="nav-item">Login</a>
+      </div>
+      <div class="goToClass login toggle" *ngIf="hasToken">
+        <button mat-icon-button [matMenuTriggerFor]="profile">
+          <mat-icon
+            style="margin-right: 0.2rem; transform: scale(1.2)"
+            color="primary"
+            >account_circle</mat-icon
+          >
+          <mat-icon> arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #profile="matMenu">
+          <a mat-menu-item style="display: flex; align-items: center">
+            <img
+              src="https://thispersondoesnotexist.com/image"
+              alt="profile"
+              class="profile-picture"
+            />
+            {{ userName }}</a
+          >
+          <a mat-menu-item routerLink="/en/class">
+            <mat-icon color="primary" style="margin-right: 0.25rem"
+              >menu_book</mat-icon
+            >
+            <span>My Courses</span>
+          </a>
+          <a mat-menu-item routerLink=".">
+            <mat-icon color="primary" style="margin-right: 0.25rem"
+              >settings</mat-icon
+            >
+            <span>Settings</span>
+          </a>
+          <a mat-menu-item (click)="logMeOut()">
+            <mat-icon color="primary" style="margin-right: 0.25rem"
+              >logout</mat-icon
+            >
+            <span>Log Out</span>
+          </a>
+        </mat-menu>
       </div>
       <div class="lang">
         <button

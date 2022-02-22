@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
 })
 export class EnglishComponent implements OnInit {
   isActive = 'home';
+  hasToken = localStorage.getItem('token')?.length;
+  userName = localStorage.getItem('fName')?.replace(/"/g, '');
   drop = false;
   isHidden = true;
   showLogin = true;
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.router.navigate(['/en/welcome']);
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) this.showLogin = false;
@@ -37,5 +41,14 @@ export class EnglishComponent implements OnInit {
     document
       .getElementById(str)
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  logMeOut() {
+    localStorage.removeItem('token');
+    this.router
+      .navigateByUrl('/refresh', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['/en/welcome']);
+      });
   }
 }
