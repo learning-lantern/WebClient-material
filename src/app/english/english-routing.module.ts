@@ -33,7 +33,7 @@ const routes: Routes = [
         component: EmailValidationComponent,
       },
       {
-        path: 'auth/email-validation/:id/:validationCode',
+        path: 'auth/email-validation',
         component: ValidationRedirectComponent,
       },
     ],

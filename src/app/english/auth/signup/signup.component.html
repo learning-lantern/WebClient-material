@@ -29,65 +29,68 @@
     <mat-form-field appearance="outline" color="primary">
       <mat-label>First Name</mat-label>
       <input
-        name="FirstName"
+        name="userFName"
         matInput
-        formControlName="FirstName"
+        formControlName="userFName"
         placeholder="Name"
         required
       />
-      <mat-error *ngIf="FirstName.errors?.['required']"
+      <mat-error *ngIf="userFName.errors?.['required']"
         >This Field is Required</mat-error
       >
-      <mat-error *ngIf="FirstName.errors?.['minlength']"
+      <mat-error *ngIf="userFName.errors?.['minlength']"
         >Name should be 2-30 characters long</mat-error
       >
     </mat-form-field>
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Middle Name</mat-label>
       <input
-        name="MiddleName"
+        name="userMName"
         matInput
-        formControlName="MiddleName"
+        formControlName="userMName"
         placeholder="Name"
         required
       />
-      <mat-error *ngIf="MiddleName.errors?.['required']"
+      <mat-error *ngIf="userMName.errors?.['required']"
         >This Field is Required</mat-error
       >
-      <mat-error *ngIf="MiddleName.errors?.['minlength']"
+      <mat-error *ngIf="userMName.errors?.['minlength']"
         >Name should be 2-30 characters long</mat-error
       >
     </mat-form-field>
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Last Name</mat-label>
       <input
-        name="LastName"
+        name="userLName"
         matInput
-        formControlName="LastName"
+        formControlName="userLName"
         placeholder="Name"
         required
       />
-      <mat-error *ngIf="LastName.errors?.['required']"
+      <mat-error *ngIf="userLName.errors?.['required']"
         >This Field is Required</mat-error
       >
-      <mat-error *ngIf="LastName.errors?.['minlength']"
+      <mat-error *ngIf="userLName.errors?.['minlength']"
         >Name should be 2-30 characters long</mat-error
       >
     </mat-form-field>
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Your email</mat-label>
       <input
-        name="Email"
+        name="userEmail"
         matInput
-        formControlName="Email"
+        formControlName="userEmail"
         placeholder="user@domain.com"
         required
       />
 
-      <mat-error *ngIf="Email.errors?.['required']"
+      <mat-error *ngIf="userEmail.errors?.['required']"
         >This Field is Required</mat-error
       >
-      <mat-error *ngIf="Email.errors?.['email']"
+      <mat-error *ngIf="userEmail.errors?.['isExist']">{{
+        userEmail.errors?.["isExist"]
+      }}</mat-error>
+      <mat-error *ngIf="userEmail.errors?.['email']"
         >Please enter a valid email</mat-error
       >
     </mat-form-field>
@@ -97,18 +100,18 @@
       <input
         matInput
         required
-        name="Password"
-        formControlName="Password"
+        name="userPassword"
+        formControlName="userPassword"
         [type]="hide ? 'password' : 'text'"
       />
       <mat-hint
         >Password should be 8 - 30 chars long and should contain letters and
         numbers.
       </mat-hint>
-      <mat-error *ngIf="Password.hasError('required')"
+      <mat-error *ngIf="userPassword.hasError('required')"
         >This Field is Required</mat-error
       >
-      <mat-error *ngIf="Password.hasError('pattern')"
+      <mat-error *ngIf="userPassword.hasError('pattern')"
         >Password should be 8 - 30 chars long and should contain letters and
         numbers and special characters [@$!%*?&].</mat-error
       >
@@ -127,22 +130,22 @@
       <input
         matInput
         required
-        name="ConfirmPassword"
-        formControlName="ConfirmPassword"
+        name="confirmPassword"
+        formControlName="confirmPassword"
         [type]="hide ? 'password' : 'text'"
       />
       <mat-hint
         >Password should be 8 - 30 chars long and should contain letters and
         numbers.
       </mat-hint>
-      <mat-error *ngIf="ConfirmPassword.hasError('required')"
+      <mat-error *ngIf="confirmPassword.hasError('required')"
         >This Field is Required</mat-error
       >
-      <mat-error *ngIf="ConfirmPassword.hasError('pattern')"
+      <mat-error *ngIf="confirmPassword.hasError('pattern')"
         >Password should be 8 - 30 chars long and should contain letters and
         numbers and special characters [@$!%*?&].</mat-error
       >
-      <mat-error *ngIf="ConfirmPassword.hasError('notMatch')"
+      <mat-error *ngIf="confirmPassword.hasError('notMatch')"
         >Password & Confirm Password doesn't match.</mat-error
       >
       <button

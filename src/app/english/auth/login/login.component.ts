@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/serivces/http.service';
+import { NotificationService } from 'src/app/serivces/notifications.service';
 import { environment as env } from 'src/environments/environment';
 
 @Component({
@@ -19,7 +20,11 @@ export class LoginComponent {
   userUniversity!: FormControl;
   userEmail!: FormControl;
   userPassword!: FormControl;
-  constructor(private http: HttpService, private router: Router) {
+  constructor(
+    private http: HttpService,
+    private router: Router,
+    private notify: NotificationService
+  ) {
     this.initFormControls();
     this.createForm();
   }
@@ -51,20 +56,18 @@ export class LoginComponent {
         this.loginForm.controls[key].markAsTouched();
       });
     } else {
-      console.log(this.loginForm.value);
-      this.http
-        .doPost(`${env.authURL}/login`, this.loginForm.value, {})
-        .subscribe(
-          (res) => {
-            let result = res as { id: number; token: string };
-            localStorage.setItem('userId', JSON.stringify(result.id));
-            localStorage.setItem('token', JSON.stringify(result.token));
-            this.router.navigate(['/en/class']);
-          },
-          (error) => {
-            // if (error.status === 401) return;
-          }
-        );
+      let body = this.loginForm.value;
+      this.http.doPost(`${env.authURL}/login`, {}, {}).subscribe(
+        (res) => {
+          let result = res as { id: number; token: string };
+          localStorage.setItem('userId', JSON.stringify(result.id));
+          localStorage.setItem('token', JSON.stringify(result.token));
+          this.router.navigate(['/en/class']);
+        },
+        (error) => {
+          // if (error.status === 401) return;
+        }
+      );
     }
   }
 }

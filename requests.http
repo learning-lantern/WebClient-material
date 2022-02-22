@@ -1,0 +1,64 @@
+### create new user
+POST http://localhost:3000/auth/signup
+Content-Type: application/json 
+
+{
+    "userEmail":"hema2@gmail.com",
+    "userPassword":"12345678Hr",
+    "userFName":"hema",
+    "userMName":"mahamed",
+    "userLName":"ali"
+}
+
+
+### validate user email
+PATCH http://localhost:3000/auth/validate-email
+Content-Type: application/json
+
+{
+    "id":1,
+    "validationCode":"2317480f"
+}
+
+### log in user
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "userUniversity":"0",
+    "userEmail":"hema@gmail.com",
+    "userPassword":"23456789Hrs"
+}
+
+
+### reset password
+PATCH http://localhost:3000/auth/reset-password
+Content-Type: application/json
+
+{
+    "userId":"1",
+    "newPassword":"23456789Hr",
+    "validationCode":"5b356f5b"
+}
+
+
+### change Email
+PATCH http://localhost:3000/auth/change-email
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE2NDUyNTM5MTR9.hPKrdhiPJfW0AXkoQQYi38d1tAKqt5ZWd1_Mi2CXpCs
+
+{
+    "userId":"1",
+    "newEmail":"hemaNew2@gmail.com",
+    "validationCode":"6413b754"
+}
+
+### request validation email
+GET http://localhost:3000/auth/send-validation
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE2NDUyNTM5MTR9.hPKrdhiPJfW0AXkoQQYi38d1tAKqt5ZWd1_Mi2CXpCs
+
+{
+    "userId":"1"
+}
+

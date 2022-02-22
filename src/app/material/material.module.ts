@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 const materials = [
   MatButtonModule,
   MatFormFieldModule,
@@ -33,6 +34,7 @@ const materials = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatTableModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

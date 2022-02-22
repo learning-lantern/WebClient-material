@@ -6,7 +6,7 @@ export const environment = {
   apiRoot: 'http://httpbin.org',
   production: false,
   socketURL: 'http://localhost:5000',
-  authURL: 'https://learning-lantern.herokuapp.com/api',
+  authURL: 'http://localhost:3000/auth',
 };
 
 /*
