@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AuthContainerComponent implements OnInit {
   constructor(private router: Router) {
-    if (localStorage.getItem('token')?.length)
+    if (localStorage.getItem('token')?.length) {
+      console.log(`token found`);
       this.router.navigate(['/en/welcome']);
+    }
   }
 
   ngOnInit(): void {}

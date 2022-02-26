@@ -19,7 +19,7 @@
       >
         <mat-option
           *ngFor="let university of universityList"
-          value="{{ university.id }}"
+          value="{{ university.name }}"
           >{{ university.name }}</mat-option
         >
       </mat-select>
@@ -53,15 +53,15 @@
         [type]="hide ? 'password' : 'text'"
       />
       <mat-hint
-        >Password should be 8 - 30 chars long and should contain letters and
-        numbers. and special character [@$!%*?&]
+        >Password should be 6 - 30 chars long and should contain letters and
+        numbers, and special character [!@#$%^&].
       </mat-hint>
       <mat-error *ngIf="userPassword.hasError('required')"
         >This Field is Required</mat-error
       >
       <mat-error *ngIf="userPassword.hasError('pattern')"
-        >Password should be 8 - 30 chars long and should contain letters and
-        numbers.</mat-error
+        >Password should be 6 - 30 chars long and should contain letters and
+        numbers, and special character [!@#$%^&].</mat-error
       >
       <button
         mat-icon-button

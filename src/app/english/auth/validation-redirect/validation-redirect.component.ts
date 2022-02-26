@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { HttpService } from 'src/app/serivces/http.service';
@@ -9,7 +9,7 @@ import { environment as env } from 'src/environments/environment';
   templateUrl: './validation-redirect.component.html',
   styleUrls: ['./validation-redirect.component.scss'],
 })
-export class ValidationRedirectComponent implements OnInit {
+export class ValidationRedirectComponent implements AfterViewInit {
   params: any;
   constructor(
     private router: ActivatedRoute,
@@ -18,21 +18,13 @@ export class ValidationRedirectComponent implements OnInit {
     private redirect: Router
   ) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.router.queryParams.subscribe((params) => {
       this.params = params;
-      let token = encodeURIComponent(this.params.token);
-      console.log(token);
       this.http
-        .doGet(
-          `${env.authURL}/Auth/ConfirmEmail?userId=${this.params.userId}&token=${token}`,
-          {
-            params: {
-              userId: this.params.userId,
-              token: encodeURIComponent(this.params.token),
-            },
-          }
-        )
+        .doGet(`${env.authURL}/Auth/ConfirmEmail`, {
+          params: this.params,
+        })
         .subscribe(
           (res) => {
             this.notify.openSnackBar('Email Validated!', 'ok', '', '', 3000);

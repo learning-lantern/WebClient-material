@@ -13,15 +13,10 @@ import { NotificationService } from 'src/app/serivces/notifications.service';
 })
 export class SignupComponent {
   hide = true;
-  universityList = [
-    { id: 1, name: 'Assuit University' },
-    { id: 2, name: 'EELU University' },
-  ];
+  universityList = [{ name: 'Assuit University' }];
   signupForm!: FormGroup;
   userUniversity!: FormControl;
   userFName!: FormControl;
-  userMName!: FormControl;
-  userLName!: FormControl;
   userEmail!: FormControl;
   userPassword!: FormControl;
   confirmPassword!: FormControl;
@@ -35,18 +30,10 @@ export class SignupComponent {
     this.createForm();
   }
   initFormControls() {
-    this.userUniversity = new FormControl('', [Validators.required]);
+    this.userUniversity = new FormControl('Assuit University', [
+      Validators.required,
+    ]);
     this.userFName = new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-      validateName,
-    ]);
-    this.userMName = new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-      validateName,
-    ]);
-    this.userLName = new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       validateName,
@@ -58,13 +45,13 @@ export class SignupComponent {
     this.userPassword = new FormControl('', [
       Validators.required,
       Validators.pattern(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]{6,}$'
+        `^(?=.*[A-Z].*[a-z])(?=.*[0-9])(?=.*[!@#$%^&]).{6,30}$`
       ),
     ]);
     this.confirmPassword = new FormControl('', [
       Validators.required,
       Validators.pattern(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]{6,}$'
+        `^(?=.*[A-Z].*[a-z])(?=.*[0-9])(?=.*[!@#$%^&]).{6,30}$`
       ),
     ]);
     this.iAgree = new FormControl(null, [Validators.requiredTrue]);
@@ -75,8 +62,6 @@ export class SignupComponent {
       {
         userUniversity: this.userUniversity,
         userFName: this.userFName,
-        userMName: this.userMName,
-        userLName: this.userLName,
         userEmail: this.userEmail,
         userPassword: this.userPassword,
         confirmPassword: this.confirmPassword,
@@ -87,11 +72,21 @@ export class SignupComponent {
   }
 
   onSubmit() {
+    let FirstName = this.userFName.value.substr(
+      0,
+      this.userFName.value.indexOf(' ')
+    );
+    let LastName = this.userFName.value.substr(
+      this.userFName.value.indexOf(' ') + 1
+    );
+    if (!FirstName)
+      this.userFName.setErrors({ lastName: 'please enter a availd name' });
     let body = {
       Email: this.userEmail.value,
       Password: this.userPassword.value,
-      FirstName: this.userFName.value,
-      LastName: this.userLName.value,
+      FirstName,
+      LastName,
+      University: this.userUniversity.value,
     };
 
     if (this.signupForm.invalid) {

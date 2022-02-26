@@ -12,10 +12,7 @@ import { environment as env } from 'src/environments/environment';
 })
 export class LoginComponent {
   hide = true;
-  universityList = [
-    { id: 1, name: 'Assuit University' },
-    { id: 2, name: 'EELU University' },
-  ];
+  universityList = [{ name: 'Assiut University' }];
   loginForm!: FormGroup;
   userUniversity!: FormControl;
   userEmail!: FormControl;
@@ -38,7 +35,7 @@ export class LoginComponent {
     this.userPassword = new FormControl('', [
       Validators.required,
       Validators.pattern(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[a-zA-Z0-9@$!%*?&]{6,}$'
+        `^(?=.*[A-Z].*[a-z])(?=.*[0-9])(?=.*[!@#$%^&]).{6,30}$`
       ),
     ]);
   }
@@ -61,20 +58,28 @@ export class LoginComponent {
       let body_ = {
         Email: this.userEmail.value,
         Password: this.userPassword.value,
+        University: this.userUniversity.value,
       };
       this.http.doPost(`${env.authURL}/Auth/signin`, body_, {}).subscribe(
         (res) => {
-          console.log('hey!!!!!!');
           let result = res as {
-            id: number;
+            user: {
+              id: string;
+              email: string;
+              firstName: string;
+              lastName: string;
+              university: string;
+            };
             token: string;
-            lastName: string;
-            firstName: string;
           };
-          localStorage.setItem('userId', JSON.stringify(result.id));
+          localStorage.setItem('userId', JSON.stringify(result.user.id));
           localStorage.setItem('token', JSON.stringify(result.token));
-          localStorage.setItem('fName', JSON.stringify(result.firstName));
-          localStorage.setItem('lName', JSON.stringify(result.lastName));
+          localStorage.setItem('fName', JSON.stringify(result.user.firstName));
+          localStorage.setItem('lName', JSON.stringify(result.user.lastName));
+          localStorage.setItem(
+            'university',
+            JSON.stringify(result.user.university)
+          );
           this.notify.openSnackBar('Successfull', 'ok', '', '', 3000);
           this.router.navigate(['/en/class']);
         },
