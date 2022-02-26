@@ -72,14 +72,13 @@ export class SignupComponent {
   }
 
   onSubmit() {
-    let FirstName = this.userFName.value.substr(
-      0,
-      this.userFName.value.indexOf(' ')
-    );
-    let LastName = this.userFName.value.substr(
-      this.userFName.value.indexOf(' ') + 1
-    );
-    if (!FirstName)
+    let FirstName = this.userFName.value
+      .substr(0, this.userFName.value.indexOf(' '))
+      .trim();
+    let LastName = this.userFName.value
+      .substr(this.userFName.value.indexOf(' ') + 1)
+      .trim();
+    if (!FirstName || !LastName)
       this.userFName.setErrors({ lastName: 'please enter a availd name' });
     let body = {
       Email: this.userEmail.value,
