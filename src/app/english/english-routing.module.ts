@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '../not-found/not-found.component';
 import { AuthContainerComponent } from './auth/auth-container/auth-container.component';
 import { EmailValidationComponent } from './auth/email-validation/email-validation.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -13,7 +14,6 @@ const routes: Routes = [
     path: '',
     component: EnglishComponent,
     children: [
-      { path: 'welcome', component: MainComponent },
       {
         path: 'auth',
         component: AuthContainerComponent,
@@ -28,6 +28,8 @@ const routes: Routes = [
           },
         ],
       },
+      { path: 'welcome', component: MainComponent },
+
       {
         path: 'auth/email-validation/:email',
         component: EmailValidationComponent,
@@ -38,6 +40,7 @@ const routes: Routes = [
       },
     ],
   },
+
   {
     path: 'class',
     loadChildren: () =>

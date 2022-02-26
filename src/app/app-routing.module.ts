@@ -5,14 +5,14 @@ import { RefreshComponent } from './refresh/refresh.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/en/welcome',
-    pathMatch: 'full',
-  },
-  {
     path: 'en',
     loadChildren: () =>
       import('./english/english.module').then((m) => m.EnglishModule),
+  },
+  {
+    path: '',
+    redirectTo: '/en/welcome',
+    pathMatch: 'full',
   },
   {
     path: 'refresh',

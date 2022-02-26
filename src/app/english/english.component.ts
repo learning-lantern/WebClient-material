@@ -14,7 +14,7 @@ export class EnglishComponent implements OnInit {
   isHidden = true;
   showLogin = true;
   constructor(private router: Router) {
-    this.router.navigate(['/en/welcome']);
+    if (this.router.url === '/en') this.router.navigate(['/en/welcome']);
   }
 
   ngOnInit(): void {

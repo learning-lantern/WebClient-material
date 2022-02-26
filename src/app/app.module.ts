@@ -7,7 +7,7 @@ import { RefreshComponent } from './refresh/refresh.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [AppComponent, RefreshComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
