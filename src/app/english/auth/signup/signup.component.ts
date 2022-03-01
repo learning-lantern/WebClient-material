@@ -13,7 +13,7 @@ import { NotificationService } from 'src/app/serivces/notifications.service';
 })
 export class SignupComponent {
   hide = true;
-  universityList = [{ name: 'Assuit University' }];
+  universityList = [{ name: 'Assiut University' }];
   signupForm!: FormGroup;
   userUniversity!: FormControl;
   userFName!: FormControl;
@@ -30,7 +30,7 @@ export class SignupComponent {
     this.createForm();
   }
   initFormControls() {
-    this.userUniversity = new FormControl('Assuit University', [
+    this.userUniversity = new FormControl('Assiut University', [
       Validators.required,
     ]);
     this.userFName = new FormControl('', [
