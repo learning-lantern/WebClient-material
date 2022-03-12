@@ -3,8 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CalenderComponent } from './calender/calender.component';
 import { ClassListComponent } from './class-list.component';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
+import { TodoCompletedComponent } from './todo/todo-completed/todo-completed.component';
+import { TodoImportantComponent } from './todo/todo-important/todo-important.component';
 import { TodoMydayComponent } from './todo/todo-myday/todo-myday.component';
+import { TodoTasksComponent } from './todo/todo-tasks/todo-tasks.component';
 import { TodoComponent } from './todo/todo.component';
+
 
 const routes: Routes = [
   {
@@ -18,7 +22,12 @@ const routes: Routes = [
       {
         path: 'todo',
         component: TodoComponent,
-        children: [{ path: 'myday', component: TodoMydayComponent }],
+        children: [
+          { path: 'myday', component: TodoMydayComponent },
+          { path: 'tasks', component: TodoTasksComponent },
+          { path: 'important', component: TodoImportantComponent },
+          { path: 'completed', component: TodoCompletedComponent },
+      ],
       },
       {
         path: 'calendar',

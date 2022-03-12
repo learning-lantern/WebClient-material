@@ -21,4 +21,5 @@ export class HttpService {
   doDelete(url: string, options: {}) {
     return this.http.delete(`${url}`, options);
   }
+  
 }
