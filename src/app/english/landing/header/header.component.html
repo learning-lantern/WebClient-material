@@ -1,0 +1,93 @@
+<mat-toolbar class="header">
+  <a routerLink="./welcome" (click)="changeActive('home'); scrollTO('home')"
+    ><img
+      src="../../assets/img/logo.png"
+      alt="log0"
+      class="icon50"
+      title="Learning Lantern logo"
+  /></a>
+  <div class="nav-links toggle">
+    <a
+      routerLink="./welcome"
+      class="nav-item"
+      [class.active]="isActive == 'home'"
+      (click)="changeActive('home'); scrollTO('home')"
+      >Home</a
+    >
+    <a
+      routerLink="./welcome"
+      class="nav-item"
+      [class.active]="isActive == 'service'"
+      (click)="changeActive('service'); scrollTO('services')"
+    >
+      Serives</a
+    >
+    <a
+      routerLink="./welcome"
+      class="nav-item"
+      [class.active]="isActive == 'about'"
+      (click)="changeActive('about'); scrollTO('contact-us')"
+      >Contact Us</a
+    >
+  </div>
+  <div class="login toggle" *ngIf="!hasToken">
+    <mat-icon style="margin-right: -1.5rem">login</mat-icon>
+    <a routerLink="./auth/login" class="nav-item">Login</a>
+  </div>
+  <div class="goToClass login toggle" *ngIf="hasToken">
+    <button mat-icon-button [matMenuTriggerFor]="profile">
+      <mat-icon
+        style="margin-right: 0.2rem; transform: scale(1.2)"
+        color="primary"
+        >account_circle</mat-icon
+      >
+      <mat-icon> arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #profile="matMenu">
+      <a mat-menu-item style="display: flex; align-items: center">
+        <img
+          src="https://thispersondoesnotexist.com/image"
+          alt="profile"
+          class="profile-picture"
+        />
+        {{ userName }}</a
+      >
+      <a mat-menu-item routerLink="/en/class">
+        <mat-icon color="primary" style="margin-right: 0.25rem"
+          >menu_book</mat-icon
+        >
+        <span>My Courses</span>
+      </a>
+      <a mat-menu-item routerLink=".">
+        <mat-icon color="primary" style="margin-right: 0.25rem"
+          >settings</mat-icon
+        >
+        <span>Settings</span>
+      </a>
+      <a mat-menu-item (click)="logMeOut()">
+        <mat-icon color="primary" style="margin-right: 0.25rem"
+          >logout</mat-icon
+        >
+        <span>Log Out</span>
+      </a>
+    </mat-menu>
+  </div>
+  <div class="lang">
+    <button
+      mat-button
+      style="font-size: 1.2rem"
+      class="nav-item"
+      [matMenuTriggerFor]="menu"
+    >
+      EN
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>AR</button>
+      <button mat-menu-item>EN</button>
+    </mat-menu>
+
+    <button mat-icon-button (click)="toggle()" class="bars">
+      <mat-icon style="transform: scale(1.5)">menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

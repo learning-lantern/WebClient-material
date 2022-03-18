@@ -3,7 +3,7 @@
     <mat-form-field appearance="fill" style="width: 100%" role="group">
       <div>
         <mat-label>Add Task</mat-label>
-        <input matInput formControlName="name" />
+        <input matInput formControlName="Name" />
       </div>
     </mat-form-field>
     <button type="submit" class="add-btn" mat-button color="primary">
@@ -15,11 +15,11 @@
       *ngFor="let task of taskListClient"
       (click)="openDetail(task)"
     >
-      <mat-checkbox>{{ task.name }}</mat-checkbox>
+      <mat-checkbox>{{ task.Name }}</mat-checkbox>
       <mat-icon
         style="margin-left: auto; padding: 1em"
-        (click)="task.isFavorite = !task.isFavorite"
-        >{{ task.isFavorite ? "star" : "star_outline" }}</mat-icon
+        (click)="task.Important = !task.Important"
+        >{{ task.Important ? "star" : "star_outline" }}</mat-icon
       >
     </mat-list-item>
   </mat-nav-list>

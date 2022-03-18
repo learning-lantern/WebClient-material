@@ -8,11 +8,13 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MaterialModule } from '../material/material.module';
 import { ServiceModule } from '../serivces/services.module';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './landing/main/main.component';
 import { EmailValidationComponent } from './auth/email-validation/email-validation.component';
 import { ValidationRedirectComponent } from './auth/validation-redirect/validation-redirect.component';
 import { TodoTasksComponent } from './class-list/todo/todo-tasks/todo-tasks.component';
+import { ServiceComponent } from './landing/service-component/service.component';
+import { HeaderComponent } from './landing/header/header.component';
 @NgModule({
   declarations: [
     EnglishComponent,
@@ -22,7 +24,8 @@ import { TodoTasksComponent } from './class-list/todo/todo-tasks/todo-tasks.comp
     MainComponent,
     EmailValidationComponent,
     ValidationRedirectComponent,
-   
+    ServiceComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,

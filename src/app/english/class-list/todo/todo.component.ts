@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { showDetailService } from './show-detail.service';
 import { HttpClient } from '@angular/common/http';
+import { TodoTask } from 'src/app/interface/todo-tasks';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -9,12 +10,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TodoComponent implements OnInit {
   detailOpend = false;
-  taskDetail: { name: string; isFavorite: boolean } = {
-    name: 'dummy',
-    isFavorite: true,
+  taskDetail: TodoTask = {
+    Id: 10,
+    Name: 'hello',
+    DueDate: '',
+    Note: '',
+    Important: false,
+    Myday: false,
+    Completed: false,
+    Repeated: '',
+    key: '',
   };
 
-  constructor(private detail: showDetailService, private router: Router, private http: HttpClient) { }
+  constructor(
+    private detail: showDetailService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
   ngOnInit(): void {
     if (this.router.url === '/en/class/todo') {
       console.log(this.router.url);

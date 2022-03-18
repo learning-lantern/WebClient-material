@@ -24,55 +24,8 @@
 <div class="section-title" id="services">
   <h1>Our Services</h1>
 </div>
-<div class="serv-grid">
-  <div class="serv-item">
-    <img
-      src="../../../assets/img/virtual-classroom.png"
-      alt="virtual-classroom"
-    />
-    <strong class="serv-name">Virtual Classroom</strong>
-    <p>
-      Connect Students and Instructor together via
-      <strong class="imp">Online Interactive</strong> meetings
-    </p>
-  </div>
-
-  <div class="serv-item">
-    <img src="../../../../assets/img/chat.png" alt="chat" />
-    <strong class="serv-name">Instant Chat</strong>
-    <p>
-      Stay Connected with others by sending
-      <strong class="imp"> Instant Messages.</strong>
-    </p>
-  </div>
-
-  <div class="serv-item">
-    <img src="../../../../assets/img/video.png" alt="video" />
-    <strong class="serv-name">Interactive Video</strong>
-    <p>
-      learning is available any where any time via
-      <strong>Interactive Videos.</strong> using our
-      <strong class="imp">Video Hosting Service </strong>
-    </p>
-  </div>
-
-  <div class="serv-item">
-    <img src="../../../../assets/img/calendar.png" alt="calendar" />
-    <strong class="serv-name">Calender & ToDo List</strong>
-    <p>
-      Keep yourself organized with the integrated
-      <strong class="imp"> Calender & ToDo list </strong>services.
-    </p>
-  </div>
-
-  <div class="serv-item">
-    <img src="../../../../assets/img/exam.png" alt="" />
-    <strong class="serv-name">Online Exams & Quizes</strong>
-    <p>
-      Test the Your Learning Progress via
-      <strong class="imp"> Online Exams & Quizes.</strong>
-    </p>
-  </div>
+<div class="serv-grid" *ngFor="let serv of servicesList">
+  <app-service-item [serviceDetail]="serv"></app-service-item>
 </div>
 <div class="contact-us" id="contact-us">
   <mat-card class="contact-form">

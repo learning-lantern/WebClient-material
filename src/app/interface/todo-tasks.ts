@@ -1,12 +1,11 @@
 export interface TodoTask {
   Id: number;
-  name: string;
-  isFavorite: boolean;
-  isMyday: boolean;
-  isCompleted: boolean;
-  date: {
-    dueDate: string;
-    repeate: string;
-  };
+  Name: string;
+  DueDate: string;
+  Note: string;
+  Completed: boolean;
+  Important: boolean;
+  Myday: boolean;
+  Repeated: string;
   key: string;
 }

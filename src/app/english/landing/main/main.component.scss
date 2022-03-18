@@ -47,26 +47,6 @@
   grid-auto-rows: 400px;
 }
 
-.serv-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1em;
-}
-
-.serv-item img {
-  width: 250px;
-  height: 200px;
-  margin-bottom: 1rem;
-}
-.serv-item p {
-  max-width: 450px;
-}
-.imp {
-  color: rgba(var(--green));
-}
 .section-title {
   display: flex;
   justify-content: center;

@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 })
 export class EnglishComponent implements OnInit {
   isActive = 'home';
-  hasToken = localStorage.getItem('token')?.length;
-  userName = localStorage.getItem('fName')?.replace(/"/g, '');
   drop = false;
   isHidden = true;
   showLogin = true;

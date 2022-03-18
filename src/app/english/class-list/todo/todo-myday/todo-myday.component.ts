@@ -30,7 +30,7 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
   }
   CreatNewTask() {
     this.addTaskForm = this.fb.group({
-      name: '',
+      Name: '',
       date: this.fb.group({
         dueDate: '',
         repeat: '0',
@@ -46,7 +46,7 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
     this.taskListClient.push(newTask);
     this.syncTaskToLoacalStorage();
     let body_ = {
-      Name: newTask.name,
+      Name: newTask.Name,
       key: this.generateKey(),
     };
     this.https.doPost(``, body_, {}).subscribe((res) => {
@@ -63,6 +63,13 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
           key: string;
         };
       };
+    });
+  }
+
+  private addTaskRequest(task: TodoTask) {
+    this.https.doPost(``, task, {}).subscribe((res) => {
+      let result = res as TodoTask;
+      this.syncTaskList(result.key, result);
     });
   }
 
@@ -98,7 +105,7 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
     this.syncFromServer();
   }
 
-  openDetail(task: { name: string; isFavorite: boolean }) {
+  openDetail(task: TodoTask) {
     this.detail.showDetail.next(task);
   }
 
@@ -107,14 +114,13 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
     let res: TodoTask[] = [
       {
         Id: 10,
-        name: '',
-        isFavorite: false,
-        isMyday: false,
-        isCompleted: false,
-        date: {
-          dueDate: '',
-          repeate: '',
-        },
+        Name: 'hello',
+        DueDate: '',
+        Note: '',
+        Important: false,
+        Myday: false,
+        Completed: false,
+        Repeated: '',
         key: '',
       },
     ];
@@ -133,6 +139,13 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
           this.syncTaskToLoacalStorage();
         }
       }
+    }
+    let notSendTasks = cachedTasks.filter((task: TodoTask) => {
+      return task.Id === undefined;
+    });
+
+    for (let task of notSendTasks) {
+      this.addTaskRequest(task);
     }
   }
 
