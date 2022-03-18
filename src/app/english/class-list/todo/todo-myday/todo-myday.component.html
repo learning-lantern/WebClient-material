@@ -1,20 +1,26 @@
 <mat-card class="myday">
-  <div class="addTask">
-    <mat-form-field appearance="fill" style="width: 100%" role="group" [formGroup]="addTaskForm" (ngSubmit)="addtask()">
-     <div>
-      <mat-label>Add Task</mat-label>
-      <input matInput formControlName="task"/>
-     </div>
+  <form class="addTask" (ngSubmit)="addTask()" [formGroup]="addTaskForm">
+    <mat-form-field appearance="fill" style="width: 100%" role="group">
+      <div>
+        <mat-label>Add Task</mat-label>
+        <input matInput formControlName="name" />
+      </div>
     </mat-form-field>
-    <button type="submit" class="add-btn" mat-button color="primary" (click)="addtask()">Add</button>
-  </div>
+    <button type="submit" class="add-btn" mat-button color="primary">
+      Add
+    </button>
+  </form>
   <mat-nav-list>
-    <mat-list-item *ngFor="let task of taskList" (click)="openDetail(task)">
+    <mat-list-item
+      *ngFor="let task of taskListClient"
+      (click)="openDetail(task)"
+    >
       <mat-checkbox>{{ task.name }}</mat-checkbox>
       <mat-icon
         style="margin-left: auto; padding: 1em"
         (click)="task.isFavorite = !task.isFavorite"
-        >{{task.isFavorite ? "star" : "star_outline" }}</mat-icon>
+        >{{ task.isFavorite ? "star" : "star_outline" }}</mat-icon
+      >
     </mat-list-item>
   </mat-nav-list>
 </mat-card>
