@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { showDetailService } from '../show-detail.service';
 import { TodoTask } from 'src/app/interface/todo-tasks';
+import { HttpService } from 'src/app/serivces/http.service';
 
 @Component({
   selector: 'app-todo-myday',
@@ -9,11 +10,12 @@ import { TodoTask } from 'src/app/interface/todo-tasks';
   styleUrls: ['./todo-myday.component.scss'],
 })
 export class TodoMydayComponent implements OnInit {
-   taskList: TodoTask[] = [];
-   addTaskForm: FormGroup;
+  taskList: TodoTask[] = [];
+  addTaskForm: FormGroup;
+  task!: FormControl;
 
   @Output() showDetail = new EventEmitter<void>();
-  constructor(private detail: showDetailService ,private fb: FormBuilder) {
+  constructor(private detail: showDetailService, private fb: FormBuilder, private https: HttpService) {
     this.addTaskForm = this.CreatNewTask('task');
   }
   CreatNewTask(tasks: string): FormGroup {
@@ -33,13 +35,33 @@ export class TodoMydayComponent implements OnInit {
   addtask() {
     let newTask = this.addTaskForm.value;
     this.taskList.push(newTask);
+    let body_ = {
+      Name: this.task.value
+    };
+    this.https.doPost(``, body_, {}).subscribe(
+      (res) => {
+        let result = res as {
+          UserId: {
+            Id: number;
+            Name: string;
+            DueDate: string;
+            Note: string;
+            Completed: boolean;
+            Important: boolean;
+            MyDay: true;
+            Repeated: string;
+          };
+
+        }
+      }
+    )
   }
 
   removeTask(item: number) {
     this.taskList.splice(item, 1);
-  }   
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   openDetail(task: { name: string; isFavorite: boolean }) {
     this.detail.showDetail.next(task);

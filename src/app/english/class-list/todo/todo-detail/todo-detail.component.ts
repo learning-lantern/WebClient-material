@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { HttpService } from 'src/app/serivces/http.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -10,12 +11,32 @@ export class TodoDetailComponent implements OnInit {
   favorite = false;
   repeatOption = '';
   @Output() toggleSidenav = new EventEmitter<void>();
-  constructor() {}
+  constructor(private https: HttpService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onClose() {
     this.toggleSidenav.emit();
+  }
+  postTask() {
+    let body_ = {
+
+    };
+    this.https.doPost(``, body_, {}).subscribe(
+      (res) => {
+        let result = res as {
+          UserId: {
+            Id: number;
+            DueDate: string;
+            Note: string;
+            Completed: boolean;
+            Important: boolean;
+            MyDay: true;
+            Repeated: string;
+          };
+        }
+      }
+    )
   }
 
   setRepeatOption(str: string) {

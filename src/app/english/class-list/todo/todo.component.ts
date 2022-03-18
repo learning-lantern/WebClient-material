@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { showDetailService } from './show-detail.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -12,8 +13,8 @@ export class TodoComponent implements OnInit {
     name: 'dummy',
     isFavorite: true,
   };
-  constructor(private detail: showDetailService, private router: Router) {}
 
+  constructor(private detail: showDetailService, private router: Router, private http: HttpClient) { }
   ngOnInit(): void {
     if (this.router.url === '/en/class/todo') {
       console.log(this.router.url);

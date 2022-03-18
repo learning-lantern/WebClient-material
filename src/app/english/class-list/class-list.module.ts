@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoTasksComponent } from './todo/todo-tasks/todo-tasks.component';
 import { TodoImportantComponent } from './todo/todo-important/todo-important.component';
 import { TodoCompletedComponent } from './todo/todo-completed/todo-completed.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 FullCalendarModule.registerPlugins([
@@ -46,7 +47,8 @@ FullCalendarModule.registerPlugins([
     MaterialModule,
     FullCalendarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [showDetailService],
 })
