@@ -17,6 +17,7 @@ import { HttpService } from 'src/app/serivces/http.service';
 })
 export class TodoMydayComponent implements OnInit, OnDestroy {
   taskListClient: TodoTask[] = [];
+
   addTaskForm: FormGroup = new FormGroup({});
   task!: FormControl;
 
@@ -40,6 +41,7 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
   // getTasks(): FormArray {
   //   return <FormArray>this.addTaskForm.get('addNewTask');
   // }
+
   addTask() {
     let newTask: TodoTask = this.addTaskForm.value;
     newTask['key'] = this.generateKey();

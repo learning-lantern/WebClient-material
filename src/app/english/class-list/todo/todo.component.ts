@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { showDetailService } from './show-detail.service';
 import { HttpClient } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { TodoTask } from 'src/app/interface/todo-tasks';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss'],
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnDestroy {
   detailOpend = false;
   taskDetail: TodoTask = {
     Id: 10,
@@ -32,13 +32,17 @@ export class TodoComponent implements OnInit {
       console.log(this.router.url);
       this.router.navigate([this.router.url, 'myday']);
     }
-    this.detail.getShowDetail().subscribe((data) => {
+    this.detail.getShowDetail().subscribe((task) => {
       this.showDetails();
-      this.taskDetail = data;
+      this.taskDetail = task;
     });
   }
 
   showDetails() {
     this.detailOpend = true;
+  }
+
+  ngOnDestroy(): void {
+    // unsunscribe all observable
   }
 }
