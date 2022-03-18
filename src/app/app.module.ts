@@ -6,11 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RefreshComponent } from './refresh/refresh.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, RefreshComponent, NotFoundComponent],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule,
   FormsModule,
-  ReactiveFormsModule],
+  ReactiveFormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
