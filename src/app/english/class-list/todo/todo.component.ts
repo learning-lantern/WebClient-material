@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { showDetailService } from './show-detail.service';
 import { HttpClient } from '@angular/common/http';
-import { TodoTask } from 'src/app/interface/todo-tasks';
+import { TodoTask } from 'src/app/interface/todo-tasks.interface';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',

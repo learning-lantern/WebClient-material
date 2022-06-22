@@ -7,11 +7,12 @@ import { RefreshComponent } from './refresh/refresh.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditorModule } from '@tinymce/tinymce-angular';
 @NgModule({
   declarations: [AppComponent, RefreshComponent, NotFoundComponent],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule,
   FormsModule,
-  ReactiveFormsModule,HttpClientModule],
+  ReactiveFormsModule,HttpClientModule,EditorModule],
   providers: [],
   bootstrap: [AppComponent],
 })

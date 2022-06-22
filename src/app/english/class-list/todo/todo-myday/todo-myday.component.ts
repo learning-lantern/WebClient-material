@@ -7,8 +7,10 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { showDetailService } from '../show-detail.service';
-import { TodoTask } from 'src/app/interface/todo-tasks';
+import { TodoTask } from 'src/app/interface/todo-tasks.interface';
 import { HttpService } from 'src/app/serivces/http.service';
+import { environment as env } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-myday',
@@ -16,8 +18,8 @@ import { HttpService } from 'src/app/serivces/http.service';
   styleUrls: ['./todo-myday.component.scss'],
 })
 export class TodoMydayComponent implements OnInit, OnDestroy {
+  params: any;
   taskListClient: TodoTask[] = [];
-
   addTaskForm: FormGroup = new FormGroup({});
   task!: FormControl;
 
@@ -25,7 +27,8 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
   constructor(
     private detail: showDetailService,
     private fb: FormBuilder,
-    private https: HttpService
+    private https: HttpService,
+    private router: ActivatedRoute
   ) {
     this.CreatNewTask();
   }
@@ -64,6 +67,7 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
           Repeated: string;
           key: string;
         };
+        token: string;
       };
     });
   }
@@ -110,9 +114,15 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
   openDetail(task: TodoTask) {
     this.detail.showDetail.next(task);
   }
-
   private syncFromServer() {
     //get request
+
+    this.router.queryParams.subscribe((params) => {
+      this.params = {important:'false'};
+      this.https.doGet(`${env.authURL}/getTasks?Id=${this.params.Id}&token=${encodeURIComponent(this.params.token)}`, {params}
+      )
+      console.log('params',params);
+    });
     let res: TodoTask[] = [
       {
         Id: 10,
@@ -151,5 +161,5 @@ export class TodoMydayComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 }

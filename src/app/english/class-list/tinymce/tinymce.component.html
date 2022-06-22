@@ -1,0 +1,14 @@
+<mat-drawer-container>
+    <mat-drawer #left class="left" position="start" mode="side">
+        <app-lesson-side-nav (toggleSide)="left.close()"></app-lesson-side-nav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar>
+            <button mat-icon-button (click)="left.toggle()">
+         <mat-icon>menu</mat-icon>
+       </button>
+            <h2>Lessons</h2>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

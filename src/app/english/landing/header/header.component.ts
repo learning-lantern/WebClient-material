@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { TodoTask } from 'src/app/interface/todo-tasks';
+import { TodoTask } from 'src/app/interface/todo-tasks.interface';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TodoTask } from 'src/app/interface/todo-tasks';
+import { TodoTask } from 'src/app/interface/todo-tasks.interface';
 
 @Injectable()
 export class showDetailService {

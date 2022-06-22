@@ -8,6 +8,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ValidationRedirectComponent } from './auth/validation-redirect/validation-redirect.component';
 import { EnglishComponent } from './english.component';
 import { MainComponent } from './landing/main/main.component';
+import { VideosComponent } from './class-list/videos/videos.component';
+
 
 const routes: Routes = [
   {
@@ -45,6 +47,9 @@ const routes: Routes = [
     path: 'class',
     loadChildren: () =>
       import('./class-list/class-list.module').then((m) => m.ClassListModule),
+  },
+  {
+    path: 'video',component:VideosComponent
   },
 ];
 
