@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { showDetailService } from '../show-detail.service';
-import { TodoTask } from 'src/app/interface/todo-tasks';
+import { TodoTask } from 'src/app/interface/todo-tasks.interface';
 import { HttpService } from 'src/app/serivces/http.service';
 
 @Component({

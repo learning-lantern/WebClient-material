@@ -19,7 +19,12 @@ import { TodoTasksComponent } from './todo/todo-tasks/todo-tasks.component';
 import { TodoImportantComponent } from './todo/todo-important/todo-important.component';
 import { TodoCompletedComponent } from './todo/todo-completed/todo-completed.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { VideosComponent } from './videos/videos.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { TinymceComponent } from './tinymce/tinymce.component';
+import { LessonSideNavComponent } from './tinymce/lesson-side-nav/lesson-side-nav.component';
+import { LessonDetailComponent } from './tinymce/lesson-detail/lesson-detail.component';
 
 FullCalendarModule.registerPlugins([
   // register FullCalendar plugins
@@ -40,6 +45,11 @@ FullCalendarModule.registerPlugins([
     TodoTasksComponent,
     TodoImportantComponent,
     TodoCompletedComponent,
+    VideosComponent,
+    WelcomeComponent,
+    TinymceComponent,
+    LessonSideNavComponent,
+    LessonDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +58,8 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    EditorModule,
   ],
   providers: [showDetailService],
 })

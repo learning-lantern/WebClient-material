@@ -1,7 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { HttpService } from 'src/app/serivces/http.service';
 import { NotificationService } from 'src/app/serivces/notifications.service';
 import { environment as env } from 'src/environments/environment';
@@ -22,11 +21,7 @@ export class ValidationRedirectComponent implements OnInit {
   ngOnInit(): void {
     this.router.queryParams.subscribe((params) => {
       this.params = params;
-      this.http
-        .doGet(
-          `${env.authURL}/Auth/ConfirmEmail?userId=${
-            this.params.userId
-          }&token=${encodeURIComponent(this.params.token)}`,
+      this.http.doGet(`${env.authURL}/Auth/ConfirmEmail?userId=${this.params.userId}&token=${encodeURIComponent(this.params.token)}`,
           {}
         )
         .subscribe(
