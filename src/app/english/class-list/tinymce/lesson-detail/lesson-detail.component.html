@@ -1,11 +1,99 @@
-<editor class="editor" apiKey="01c15990ym02ot7me4tu7l9bqeol8tt822ccpx93bg8w0b5x" [init]="{  
-    menubar: 'favs file edit view insert format tools table help', plugins: ['advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-'insertdatetime', 'media', 'table', 'help', 'wordcount' ], toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
-'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-'forecolor backcolor emoticons | help',
-menu: {
-favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
-},
-content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'}">
-</editor>
+<html>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Live Edit & Preview</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<style type="text/css">
+		.panel {
+			margin-top: 25px;
+		}
+
+		.panel-body {
+			padding: 0;
+		}
+
+		.glyphicon {
+			font-size: 20px;
+		}
+
+		#editor,
+		#preview {
+			padding: 15px;
+		}
+
+		#editor-wrap,
+		#editor,
+		#preview {
+			width: 100%;
+			height: 300px;
+		}
+
+		#editor {
+			border: 0;
+		}
+
+		#editor-wrap {
+			display: none;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-offset-2 col-md-8">
+
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<h3 class="panel-title pull-left">Lorem Ipsum</h3>
+						<i class="glyphicon glyphicon-edit pull-right" id="edit-preview" (click)="toggleView()"></i>
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="panel-body">
+
+						<div [class.hide]="!isEditor"><textarea id="editor" #tinymce [(ngModel)]="htmlValue"  ></textarea></div>
+						<div  [class.hide]="isEditor" #preview>
+
+							<h1>Lorem Ipsum</h1>
+							<h4>"Neque porro quisquam est dolor sit amet, consectetur..."</h4>
+							<h5>"There is no one who loves pain itself, who seeks after it and wants to have it, simply
+								because it is pain..."</h5>
+							<hr>
+							<p style="text-align: justify;">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eros lorem, egestas
+								quis fermentum id, hendrerit sit amet massa. In ornare efficitur tellus et rutrum. Donec
+								varius pretium risus, a tempus nibh malesuada sit amet. Pellentesque finibus cursus
+								libero, vitae sollicitudin nunc ultrices eu. Nulla facilisi. Vestibulum at blandit
+								nulla. Aenean ut dapibus lectus. Lorem ipsum dolor sit amet, consectetur adipiscing
+								elit. Nunc at posuere nisl. Nulla tincidunt odio magna, et blandit magna dignissim nec.
+							</p>
+
+						</div>
+						<button (click)="get_editor_content()">Get content</button>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" ></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script type="text/javascript"></script>
+
+</body>
