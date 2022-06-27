@@ -31,9 +31,12 @@
     "@material/rtl": "^13.0.0",
     "@tinymce/tinymce-angular": "^6.0.1",
     "firebase": "^9.4.0",
+    "jquery": "^3.6.0",
     "rxfire": "^6.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "videojs-css": "^1.2.0",
+    "vjs-video": "^0.1.11",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -41,6 +44,7 @@
     "@angular/cli": "~13.2.2",
     "@angular/compiler-cli": "~13.2.0",
     "@types/jasmine": "~3.10.0",
+    "@types/jquery": "^3.5.14",
     "@types/node": "^12.11.1",
     "@types/video.js": "^7.3.40",
     "jasmine-core": "~4.0.0",
